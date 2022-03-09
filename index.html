@@ -32,6 +32,10 @@
     log.append('PWA was installed\n');
   });
 
+  window.onappinstalled = () => {
+    log.append('PWA was installed\n');
+  };
+
   window.addEventListener('beforeinstallprompt', (e) => {
     log.append("beforeinstallpormpt called\n");
     // Prevent Chrome 67 and earlier from automatically showing the prompt
