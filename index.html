@@ -22,11 +22,18 @@
   let deferredPrompt;
   let btnAdd = document.querySelector("#btnAdd");
   let log = document.querySelector("#log");
-  log.append("kukuk started<br>");
-  log.append("test<br>");
+  log.append("kukuk started\n");
+  log.append("test\n");
+
+  window.addEventListener('appinstalled', () => {
+    // Clear the deferredPrompt so it can be garbage collected
+    deferredPrompt = null;
+    // Optionally, send analytics event to indicate successful install
+    log.append('PWA was installed\n');
+  });
 
   window.addEventListener('beforeinstallprompt', (e) => {
-    log.append("beforeinstallpormpt called<br>");
+    log.append("beforeinstallpormpt called\n");
     // Prevent Chrome 67 and earlier from automatically showing the prompt
     e.preventDefault();
     // Stash the event so it can be triggered later.
@@ -52,12 +59,6 @@
       });
   });
 
-  window.addEventListener('appinstalled', () => {
-    // Clear the deferredPrompt so it can be garbage collected
-    deferredPrompt = null;
-    // Optionally, send analytics event to indicate successful install
-    log.append('PWA was installed<br>');
-  });
 </script>
 
 </html>
