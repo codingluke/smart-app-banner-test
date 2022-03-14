@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <h1>hallo</h1>
+  <h1>Smart Banner Test</h1>
   <button type="button" id="btnAdd" style="display: none;">
     install on google store
   </button>
@@ -22,19 +22,7 @@
   let deferredPrompt;
   let btnAdd = document.querySelector("#btnAdd");
   let log = document.querySelector("#log");
-  log.append("kukuk started\n");
-  log.append("test\n");
-
-  window.addEventListener('appinstalled', () => {
-    // Clear the deferredPrompt so it can be garbage collected
-    deferredPrompt = null;
-    // Optionally, send analytics event to indicate successful install
-    log.append('PWA was installed\n');
-  });
-
-  window.onappinstalled = () => {
-    log.append('PWA was installed\n');
-  };
+  log.append("events binded\n");
 
   window.addEventListener('beforeinstallprompt', (e) => {
     log.append("beforeinstallpormpt called\n");
@@ -62,7 +50,6 @@
         deferredPrompt = null;
       });
   });
-
 </script>
 
 </html>
